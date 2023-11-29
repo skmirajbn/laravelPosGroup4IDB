@@ -89,7 +89,7 @@ Route::get('/customer_delete/{id}/', [CustomersController::class, 'destroy'])->n
 
 Route::get('/addproducts', [ProductController::class, 'create'])->name('product');
 Route::post('/storeproducts', [ProductController::class, 'store'])->name('pro_add');
-Route::get('/viewproducts', [ProductController::class, 'show'])->name('pro_show');
+Route::get('/viewproducts', [ProductController::class, 'index'])->name('pro_show');
 Route::get('/pro_edit/{id}/user', [ProductController::class, 'edit'])->name('pro_editview');
 Route::put('/pro_update/{id}/user', [ProductController::class, 'update'])->name('pro_update');
 Route::get('/pro_delete/{id}/', [ProductController::class, 'destroy'])->name('pro_destroy');
@@ -103,6 +103,11 @@ Route::post('/add-cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart-update/{rowId}', [CartController::class, 'CartUpdate'])->name('update');
 Route::get('/cart-remove/{rowId}', [CartController::class, 'CartRemove'])->name('remove');
 Route::post('/create-invoice', [CartController::class, 'CreateInvoice'])->name('invoice');
+
+
+// New Routes Sk Miraj
+
+Route::get('/order/sales-order', [SalesorderController::class, 'create'])->name('order.sales-order');
 
 
 

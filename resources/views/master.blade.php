@@ -25,7 +25,7 @@
     <link href="{{ asset('assest/css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid position-relative d-flex p-0">
+    <div class="p-0 container-fluid position-relative d-flex">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -42,8 +42,8 @@
             @include('layout/nav')
             <!-- Navbar End -->
             <!-- Blank Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row bg-secondary rounded align-items-center justify-content-center mx-0">
+            <div class="px-4 pt-4 container-fluid">
+                <div class="mx-0 rounded row bg-secondary align-items-center justify-content-center">
 
                 @yield('content')
 
@@ -70,5 +70,7 @@
     <script src="{{ asset('assest/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <!-- Template Javascript -->
     <script src="{{ asset('assest/js/main.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @stack('scripts')
 </body>
 </html>

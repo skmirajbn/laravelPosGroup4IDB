@@ -4,7 +4,7 @@
 
 
 <div class="col-sm-12 col-xl-12">
-    <div class="bg-secondary rounded h-100 p-4">
+    <div class="p-4 rounded bg-secondary h-100">
         <h6 class="mb-4">Add Category</h6>
         
           <form form action="{{ route('pro_add') }}" method="POST" enctype='multipart/form-data'>
@@ -33,7 +33,7 @@
                     <select class="form-control" aria-label="Default select example" name="category_id">
                   <option value="">please Select Categorie</option>
                 @foreach ($category as $row)
-                <option value="{{$row->category_id}}" {{old('') == $row->id ? 'selected' : '' }}>{{$row->category_name}}</option>
+                <option value="{{$row->id}}" {{old('') == $row->id ? 'selected' : '' }}>{{$row->category_name}}</option>
                 @endforeach
                 </select>
               </div>
@@ -43,7 +43,7 @@
                     <select class="form-control" aria-label="Default select example" name="brand_id">
                   <option value="">please Select Brand</option>
                   @foreach ($brand as $row)
-                  <option value="{{$row->brand_id}}" {{old('') == $row->id ? 'selected' : '' }}>{{$row->brand_name}}</option>
+                  <option value="{{$row->id}}" {{old('') == $row->id ? 'selected' : '' }}>{{$row->brand_name}}</option>
                   @endforeach
                   </select>
               </div>
@@ -53,7 +53,7 @@
                     <select class="form-control" aria-label="Default select example" name="unit_id">
                   <option value="">please Select Unit</option>
                    @foreach ($unit as $row)
-                  <option value="{{$row->unit_id}}" {{old('') == $row->id ? 'selected' : '' }}>{{$row->unit_name}}</option>
+                  <option value="{{$row->id}}" {{old('') == $row->id ? 'selected' : '' }}>{{$row->unit_name}}</option>
                   @endforeach
                 </select>
               </div>

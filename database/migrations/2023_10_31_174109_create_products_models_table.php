@@ -10,17 +10,18 @@ return new class extends Migration {
      */
     public function up(): void {
         Schema::create('products_models', function (Blueprint $table) {
-            $table->id('product_id');
-            $table->string('category_id');
-            $table->string('brand_id');
+            $table->id();
+            $table->integer('category_id');
+            $table->integer('brand_id');
             $table->string('product_name');
             $table->string('description');
             $table->string('product_image');
-            $table->string('unit_id');
-            $table->string('selling_price');
-            $table->string('buying_price');
+            $table->integer('unit_id');
+            $table->decimal('selling_price');
+            $table->decimal('buying_price');
             $table->string('sku');
-            $table->string('product_status');
+            $table->integer('product_status');
+            $table->integer('stock');
             $table->timestamps();
         });
     }
