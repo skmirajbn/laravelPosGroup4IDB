@@ -9,8 +9,11 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('sales_orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('customer_id');
+            $table->integer('user_id');
+            $table->integer('status');
             $table->timestamps();
         });
     }
