@@ -35,7 +35,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Categories</a>
                         <div class="bg-transparent border-0 dropdown-menu">
                             <a href="addcategory" class="dropdown-item">Add Categories</a>
-                            <a href="viewcategory" class="dropdown-item">All Categories</a>
+                            <a href="/viewcategory" class="dropdown-item">All Categories</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -55,7 +55,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sales Order</a>
                         <div class="bg-transparent border-0 dropdown-menu">
-                            <a href="salesorder" class="dropdown-item">Create Sales Order</a>
+                            <a href="{{route('order.sales-order')}}" class="dropdown-item">Create Sales Order</a>
                             <a href="typography.html" class="dropdown-item">All Sales Orders</a>
                         </div>
                     </div>

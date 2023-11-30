@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Customers;
 use App\Models\ProductsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,8 @@ class SalesorderController extends Controller {
      */
     public function create() {
         $products = ProductsModel::with('category', 'brand')->get();
-        return view('pages.salesorders.view_sales_order', compact('products'));
+        $customers = Customers::all();
+        return view('pages.salesorders.view_sales_order', compact(['products', 'customers']));
     }
 
     /**

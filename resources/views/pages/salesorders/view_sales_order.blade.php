@@ -37,58 +37,55 @@
                                             data-target="#exampleModal" data-whatever="@mdo">New Cuestomer </a>
                                     </div>
                                 </div>
-
-                                <div>
+                                <form action="">
                                     <div>
-                                        <form action="">
-                                            <table class="table">
-                                                <thead class="bg-info">
-                                                    <tr>
-                                                        <th class="text-white">Name</th>
-                                                        <th class="text-white">Qty</th>
-                                                        <th class="text-white">selling price</th>
-                                                        <th class="text-white">Sub Total</th>
-                                                        <th class="text-white">Action</th>
+                                        <div>
+                                        
+                                                <table class="table">
+                                                    <thead class="bg-info">
+                                                        <tr>
+                                                            <th class="text-white">Name</th>
+                                                            <th class="text-white">Qty</th>
+                                                            <th class="text-white">selling price</th>
+                                                            <th class="text-white">Sub Total</th>
+                                                            <th class="text-white">Action</th>
 
-                                                    </tr>
-                                                </thead>
+                                                        </tr>
+                                                    </thead>
 
-                                                <tbody id="salesOrderForm">
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                    </div>
-                                    <div class="pl-4 pricing-footer bg-info">
-                                        <p style="font-size:19px">Quantity :{{ Cart::count() }}</p>
-                                        <p style="font-size:19px">Sub Total: {{ Cart::subtotal() }}</p>
-                                        <p style="font-size:19px">Vat : {{ Cart::tax() }}</p>
-                                        <hr>
-                                        <p>
-                                        <h2 class="text-white">Total:</h2>
-                                        <h1 id="total" class="text-white"></h1>
-                                        </p>
-
-                                        <form method="post" action="{{ url('/create-invoice') }}">
-                                            @csrf
-                                            {{-- <input type="hidden" name="id" value="{{ $cust->id }}"> --}}
+                                                    <tbody id="salesOrderForm">
+                                                        
+                                                    </tbody>
+                                                </table>
+                                        
+                                        </div>
+                                        <div class="pl-4 pricing-footer bg-info">
+                                            <p style="font-size:19px">Quantity : <span id="totalQuantity"></span></p>
+                                            <p style="font-size:19px">Sub Total: {{ Cart::subtotal() }}</p>
+                                            <p style="font-size:19px">Vat : {{ Cart::tax() }}</p>
+                                            <hr>
+                                            <p>
+                                            <h2 class="text-white">Total:</h2>
+                                            <h1 id="total" class="text-white"></h1>
+                                            </p>
                                             <div class="mt-3">
                                                 <select name="cust0003" class="form-control bg-success">
-                                                    <option class="text-dark" disabled="" selected=""> Select a
-                                                        Customer</option>
-
-                                                    <option value="">
-                                                        Customer Name
+                                                    <option class="text-dark" disabled="" selected=""> Select a Customer</option>
+                                                    @foreach ($customers as $customer )
+                                                    <option value="{{ $customer->id }}">
+                                                        {{ $customer->customer_ name }}
                                                     </option>
+                                                        
+                                                    @endforeach
 
                                                 </select>
                                             </div>
                                             <div class="mt-3">
                                                 <button type="submit" class="btn btn-success">Create Order</button>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
 
                             {{-- ********* All Product Start --}}
@@ -232,7 +229,8 @@
                 </tr>
             `
             $('#salesOrderForm').append(productHtml);
-            calculateTotal()
+            calculateTotal();
+            calculateTotalQuantity();
         })
         $(document).on('click', '.deleteProduct', function(e){
             $(this).closest('.productRow').remove();
@@ -244,7 +242,7 @@
             let subtotal = sellingPrice * quantity;
             $(this).parent().parent().find('.subTotal').text(subtotal);
             calculateTotal()
-
+            calculateTotalQuantity()
         })
 
         function calculateTotal(){
@@ -253,6 +251,17 @@
             sum += parseInt($(this).text());
           })
           $('#total').text(sum);
+        }
+
+        function calculateTotalQuantity(){
+            // Calculate total Quantity
+            let totalQuantity = 0;
+            $('.productQuantity').each(function(){
+                let quantity = parseInt($(this).val());
+                totalQuantity += quantity;
+            })
+            $('#totalQuantity').text(totalQuantity);
+            console.log(totalQuantity);
         }
 
 

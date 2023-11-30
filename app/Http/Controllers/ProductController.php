@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ProductsModel;
-use App\Models\Brand;
 use App\Models\Units;
 use Illuminate\Http\Request;
 
@@ -15,9 +15,9 @@ class ProductController extends Controller {
     public function index() {
         $user = new ProductsModel();
         $data['user'] = $user
-            ->join('categories', 'products_models.id', '=', 'categories.id')
-            ->join('brands', 'products_models.id', '=', 'brands.id')
-            ->join('units', 'products_models.id', '=', 'units.id')
+            ->join('categories', 'products_models.category_id', '=', 'categories.id')
+            ->join('brands', 'products_models.brand_id', '=', 'brands.id')
+            ->join('units', 'products_models.unit_id', '=', 'units.id')
             ->select(
                 'categories.category_name',
                 'brands.brand_name',
