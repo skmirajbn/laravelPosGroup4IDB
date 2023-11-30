@@ -73,7 +73,7 @@
                                                     <option class="text-dark" disabled="" selected=""> Select a Customer</option>
                                                     @foreach ($customers as $customer )
                                                     <option value="{{ $customer->id }}">
-                                                        {{ $customer->customer_ name }}
+                                                        {{ $customer->customer_name }}
                                                     </option>
                                                         
                                                     @endforeach
