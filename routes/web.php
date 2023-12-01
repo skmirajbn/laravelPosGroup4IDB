@@ -108,6 +108,7 @@ Route::post('/create-invoice', [CartController::class, 'CreateInvoice'])->name('
 // New Routes Sk Miraj
 
 Route::get('/order/sales-order', [SalesorderController::class, 'create'])->name('order.sales-order');
+Route::post('/order/sales-order', [SalesorderController::class, 'store'])->name('order.sales-order.store');
 
 
 

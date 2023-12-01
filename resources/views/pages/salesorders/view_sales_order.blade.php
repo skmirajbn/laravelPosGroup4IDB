@@ -37,26 +37,28 @@
                                             data-target="#exampleModal" data-whatever="@mdo">New Cuestomer </a>
                                     </div>
                                 </div>
-                                <form action="">
+                                <form action="{{ route('order.sales-order.store') }}" method="post">
+                                    @csrf
                                     <div>
                                         <div>
                                         
-                                                <table class="table">
-                                                    <thead class="bg-info">
-                                                        <tr>
-                                                            <th class="text-white">Name</th>
-                                                            <th class="text-white">Qty</th>
-                                                            <th class="text-white">selling price</th>
-                                                            <th class="text-white">Sub Total</th>
-                                                            <th class="text-white">Action</th>
+                                            <table class="table">
+                                                <thead class="bg-info">
+                                                    <tr>
+                                                        <th class="text-white">Name</th>
+                                                        <th class="text-white">Stock</th>
+                                                        <th class="text-white">Qty</th>
+                                                        <th class="text-white">selling price</th>
+                                                        <th class="text-white">Sub Total</th>
+                                                        <th class="text-white">Action</th>
 
-                                                        </tr>
-                                                    </thead>
+                                                    </tr>
+                                                </thead>
 
-                                                    <tbody id="salesOrderForm">
-                                                        
-                                                    </tbody>
-                                                </table>
+                                                <tbody id="salesOrderForm">
+                                                    
+                                                </tbody>
+                                            </table>
                                         
                                         </div>
                                         <div class="pl-4 pricing-footer bg-info">
@@ -69,7 +71,7 @@
                                             <h1 id="total" class="text-white"></h1>
                                             </p>
                                             <div class="mt-3">
-                                                <select name="cust0003" class="form-control bg-success">
+                                                <select name="customerId" class="form-control bg-success">
                                                     <option class="text-dark" disabled="" selected=""> Select a Customer</option>
                                                     @foreach ($customers as $customer )
                                                     <option value="{{ $customer->id }}">
@@ -129,7 +131,7 @@
                                                     <td>{{ $product->brand->brand_name }}</td>
                                                     <td class="sellingPrice">{{ $product->selling_price }}</td>
                                                     <td>{{ $product->sku }}</td>
-                                                    <td>{{ $product->stock }}</td>
+                                                    <td class="stock">{{ $product->stock }}</td>
                                                     <td>
                                                         <button type="submit" class="btn btn-info btn-sm addToCartButton">
                                                             <i class="fas fa-plus-square"></i>
@@ -214,18 +216,20 @@
             let productId = $(this).closest('tr').find('.productId').val();
             let productName = $(this).closest('tr').find('.productName').text();
             let sellingPrice = $(this).closest('tr').find('.sellingPrice').text();
+            let stock = $(this).closest('tr').find('.stock').text();
 
             let productHtml = `
                 <tr class="productRow">
-                    <th>${productName}</th>
+                    <td>${productName}</td>
+                    <td>${stock}</td>
                     <input type="hidden" value="${productId}" name="productId[]">
-                    <th>
+                    <td>
                         <input class="productQuantity" type="number" name="quantity[]" value="1" style="width:40px;">
-                    </th>
-                    <th class="sellingPrice">${sellingPrice}</th>
-                    <th class="subTotal">${sellingPrice}</th>
-                    <th class="deleteProduct"><a><i class="fas fa-trash-alt text-danegr"></i> </a>
-                    </th>
+                    </td>
+                    <td class="sellingPrice">${sellingPrice}</td>
+                    <td class="subTotal">${sellingPrice}</td>
+                    <td class="deleteProduct"><a><i class="fas fa-trash-alt text-danegr"></i> </a>
+                    </td>
                 </tr>
             `
             $('#salesOrderForm').append(productHtml);
