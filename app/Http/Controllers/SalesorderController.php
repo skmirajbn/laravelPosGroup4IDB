@@ -61,6 +61,11 @@ class SalesorderController extends Controller {
                         'quantity' => $quantities[$index],
                         'sales_order_id' => $salesOrder->id,
                     ]);
+                    $stock = ProductsModel::find($productId)->stock;
+                    ProductsModel::find($productId)->update([
+                        'stock' => $stock - $quantities[$index]
+                    ]);
+
                 }
                 $invoiceId = $salesOrder->id;
             });
