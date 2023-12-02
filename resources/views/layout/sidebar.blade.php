@@ -56,7 +56,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sales Order</a>
                         <div class="bg-transparent border-0 dropdown-menu">
                             <a href="{{route('order.sales-order')}}" class="dropdown-item">Create Sales Order</a>
-                            <a href="typography.html" class="dropdown-item">All Sales Orders</a>
+                            <a href="{{ route('order.sales-order.all') }}" class="dropdown-item">All Sales Orders</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">

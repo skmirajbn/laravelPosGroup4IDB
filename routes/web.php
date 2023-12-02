@@ -109,6 +109,9 @@ Route::post('/create-invoice', [CartController::class, 'CreateInvoice'])->name('
 
 Route::get('/order/sales-order', [SalesorderController::class, 'create'])->name('order.sales-order');
 Route::post('/order/sales-order', [SalesorderController::class, 'store'])->name('order.sales-order.store');
+Route::get('/order/sales-order/all', [SalesorderController::class, 'index'])->name('order.sales-order.all');
+Route::get('/order/sales-order/{SalesOrder}', [SalesorderController::class, 'show'])->name('order.sales-order.show');
+
 
 
 

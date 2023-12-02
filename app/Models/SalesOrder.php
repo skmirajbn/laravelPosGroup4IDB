@@ -12,4 +12,10 @@ class SalesOrder extends Model {
         'user_id',
         'status'
     ];
+    public function customer() {
+        return $this->belongsTo(Customers::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
